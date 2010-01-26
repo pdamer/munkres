@@ -1,18 +1,19 @@
+require 'rubygems'
 require "test/spec"
 require "munkres"
 
-context "An empty MunkresRuby instance" do
+context "An empty Munkres instance" do
   
   setup do
-    @saved_protected_instance_methods = MunkresRuby.protected_instance_methods
+    @saved_protected_instance_methods = Munkres.protected_instance_methods
     x = @saved_protected_instance_methods
-    MunkresRuby.class_eval { public *x }
-    @m = MunkresRuby.new [[0]]
+    Munkres.class_eval { public *x }
+    @m = Munkres.new [[0]]
   end
   
   teardown do
      x = @saved_protected_instance_methods
-     MunkresRuby.class_eval { protected *x }
+     Munkres.class_eval { protected *x }
    end
   
   specify "should track a matrix of values" do
@@ -36,17 +37,17 @@ context "An empty MunkresRuby instance" do
   end
 end
 
-context "A MunkresRuby solving instance" do
+context "A Munkres solving instance" do
   setup do
-    @saved_protected_instance_methods = MunkresRuby.protected_instance_methods
+    @saved_protected_instance_methods = Munkres.protected_instance_methods
     x = @saved_protected_instance_methods
-    MunkresRuby.class_eval { public *x }
-    @m = MunkresRuby.new [[1,2,3],[2,4,6],[3,6,9]]
+    Munkres.class_eval { public *x }
+    @m = Munkres.new [[1,2,3],[2,4,6],[3,6,9]]
   end
   
   teardown do
     x = @saved_protected_instance_methods
-    MunkresRuby.class_eval { protected *x }
+    Munkres.class_eval { protected *x }
   end
   
   specify "create_zero_in_rows should create a zero in each row of the matrix" do
@@ -136,38 +137,38 @@ context "A MunkresRuby solving instance" do
   
 end
 
-context "An oddly shaped MunkresRuby matrix" do 
+context "An oddly shaped Munkres matrix" do 
   setup do
-    @saved_protected_instance_methods = MunkresRuby.protected_instance_methods
+    @saved_protected_instance_methods = Munkres.protected_instance_methods
     x = @saved_protected_instance_methods
-    MunkresRuby.class_eval { public *x }
+    Munkres.class_eval { public *x }
   end
   
   teardown do
     x = @saved_protected_instance_methods
-    MunkresRuby.class_eval { protected *x }
+    Munkres.class_eval { protected *x }
   end
   
   specify "should zero pad a tall skinny on initialize" do
-    m = MunkresRuby.new [[1,2],[2,4],[3,6]]
+    m = Munkres.new [[1,2],[2,4],[3,6]]
     
     m.matrix.should == [[1,2,0],[2,4,0],[3,6,0]]
   end
   
   specify "should raise an error for wide inputs" do
-    should.raise(ArgumentError) { MunkresRuby.new [[1,2,3],[4,5,6]] }
+    should.raise(ArgumentError) { Munkres.new [[1,2,3],[4,5,6]] }
   end
   
   specify "should raise an error for irregular inputs" do
-    should.raise(ArgumentError) { MunkresRuby.new [[1,2],[1,2,3]] }
+    should.raise(ArgumentError) { Munkres.new [[1,2],[1,2,3]] }
   end
   
   specify "should raise an error for an empty matrix" do
-    should.raise(ArgumentError) { MunkresRuby.new [] }
+    should.raise(ArgumentError) { Munkres.new [] }
   end
   
   specify "should raise an error for an empty row" do
-    should.raise(ArgumentError) { MunkresRuby.new [[],[]] }
+    should.raise(ArgumentError) { Munkres.new [[],[]] }
   end
 end
     
@@ -176,7 +177,7 @@ end
 context "Complex examples with know solutions" do
   specify "should solve first example" do
     optimal_pairings = [[0,5],[1,1],[2,2],[3,3],[4,4],[5,0]]
-    m = MunkresRuby.new [[3,4,5,6,2,1],[3,0,1,2,3,4],[7,6,0,2,1,1],[4,4,5,0,1,2],[0,1,0,1,0,0],[0,3,2,2,2,0]]
+    m = Munkres.new [[3,4,5,6,2,1],[3,0,1,2,3,4],[7,6,0,2,1,1],[4,4,5,0,1,2],[0,1,0,1,0,0],[0,3,2,2,2,0]]
     
     m.find_pairings.sort.should == optimal_pairings.sort
     
@@ -184,7 +185,7 @@ context "Complex examples with know solutions" do
 
   specify "should solve a larger example" do
     optimal_pairings = []
-    m = MunkresRuby.new [[4,1,2,3],
+    m = Munkres.new [[4,1,2,3],
     [6,9,2,4],
     [1,0,3,7],
     [10,4,6,6]]
@@ -195,7 +196,7 @@ context "Complex examples with know solutions" do
   specify "should solve a non-square example" do
    optimal_pairings = [[[0, 3], [1, 2], [2, 1], [5, 0]],
                        [[0, 1], [1, 2], [2, 0], [5, 3]]]    
-    m = MunkresRuby.new [[4,1,2,3],
+    m = Munkres.new [[4,1,2,3],
     [6,9,2,4],
     [1,0,3,7],
     [10,4,6,6],
@@ -218,7 +219,7 @@ context "Complex examples with know solutions" do
     end
     
     #result = RubyProf.profile do
-      m = MunkresRuby.new arr
+      m = Munkres.new arr
       m.find_pairings
     #end
 

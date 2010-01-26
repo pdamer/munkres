@@ -250,7 +250,7 @@ class Munkres
       end
     end
     
-    if @mode = MODE_MAXIMIZE_UTIL
+    if MODE_MAXIMIZE_UTIL == @mode
       max_value = @matrix.flatten.max
       @matrix.each_with_index do |row, row_index|
         row.each_with_index do |value, col_index|

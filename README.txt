@@ -1,6 +1,6 @@
 = munkres
 
-* FIX (url)
+http://github.com/pdamer/munkres
 
 == DESCRIPTION:
 
@@ -42,7 +42,7 @@ After checking out the source, run:
 
 (The MIT License)
 
-Copyright (c) 2010 FIX
+Copyright (c) 2010
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

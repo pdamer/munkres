@@ -23,7 +23,7 @@ Rake::GemPackageTask.new(spec) do |pkg|
   pkg.need_tar = true
 end
 
-Rake::TestTask.new(:test => :build_c_ext ) do |t|
+Rake::TestTask.new() do |t|
   t.libs << "test"
   t.test_files = FileList['test/*_test.rb']
   t.verbose = true
