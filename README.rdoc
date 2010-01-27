@@ -1,14 +1,8 @@
-= munkres
-
-http://github.com/pdamer/munkres
+= Munkres:
 
 == DESCRIPTION:
 
 A ruby implementation of the kuhn-munkres or 'hungarian' algorithm for bipartite matching.
-
-== FEATURES/PROBLEMS:
-
-Match groups together 1 to 1 
 
 == SYNOPSIS:
 
@@ -23,7 +17,6 @@ being the cost of matching the corresponding members of the groups
   m = Munkres.new(cost_matrix)
   p m.find_pairings
 
-
 == REQUIREMENTS:
 
 Uses test/spec for testing.
@@ -37,6 +30,11 @@ sudo gem install munkres
 After checking out the source, run:
 
   $ rake test
+
+== AUTHORS:
+
+  * Paul Damer pdamer at gmail.com
+  * Jim Wood
 
 == LICENSE:
 
