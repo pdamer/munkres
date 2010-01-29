@@ -265,5 +265,5 @@ end
 
 #for backwards compatiability with another library.
 class Munkres::Problem < Munkres
-  alias :solve, :find_pairings
+  alias_method :solve, :find_pairings
 end
