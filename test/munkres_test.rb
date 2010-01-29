@@ -1,6 +1,6 @@
 require 'rubygems'
 require "test/spec"
-require "munkres"
+require "#{File.dirname(__FILE__)}/../lib/munkres.rb"
 
 context "An empty Munkres instance" do
   
